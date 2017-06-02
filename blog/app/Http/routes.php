@@ -15,9 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('user',['as' => 'profile' ,function () {   //对路由起名
-    echo route('profile');    //输出当前路由地址
-}]);
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){  //路由分组(提出前缀和命名空间)
+  Route::get('login','indexController@login');
+  Route::get('index','indexController@index');
+});
+
+// Route::get('admin/login','Admin\indexController@login');
+// Route::get('admin/index','Admin\indexController@index');
+
+
+// Route::get('test','Admin\indexController@index')->name('profile');   //路由命名
+
+// Route::get('test',[
+//   'as'=>'profile','uses'=>'Admin\indexController@index'   //调用路由
+// ]);
+
+// Route::get('user',['as' => 'profile' ,function () {   //对路由起名
+//     echo route('profile');    //输出当前路由地址
+// }]);
 
 // Route::get('test', 'Admin\indexController@index');//使用indexController控制器中的index方法
 
@@ -57,7 +72,7 @@ Route::get('user',['as' => 'profile' ,function () {   //对路由起名
 //     return $i.'&'.$j;
 // });
 
-// Route::get('user/{id?}', function ($id=null) {    //?表示可选
+// Route::get('user/{id?}', function ($id=null) {    //？表示可选
 //     return $id;
 // })->where('id','[0-9]+');
 

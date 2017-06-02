@@ -4,6 +4,9 @@ use App\Http\Controllers\Controller;
 
 class indexController extends Controller{
   public function index(){
-    echo "这是index控制器";
+    return view('welcome');
+  }
+  public function login(){
+    return "登录";
   }
 }
