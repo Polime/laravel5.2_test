@@ -11,20 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    session(['key'=>123]);
+Route::get('/', function() {
     return view('welcome');
 });
 
-Route::get('test', function () {
-    echo session('key');
-    return 'test';
-});
+Route::get('view', 'ViewController@login');
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'web'],function(){  //路由分组(提出前缀和命名空间)
-  Route::get('login','indexController@login');
-  Route::get('index','indexController@index');
-});
+// Route::get('view', function() {
+//     return view('my_laravel');
+// });   //视图的直接分配
+
+
+// Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>['web']],function(){  //路由分组(提出前缀和命名空间)
+//
+//   Route::get('login','indexController@login');
+//   Route::resource('index','indexController@index');
+// });
 
 // Route::get('admin/login','Admin\indexController@login');
 // Route::get('admin/index','Admin\indexController@index');
@@ -94,5 +96,13 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'web'],functi
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+  // Route::get('/', function () {
+  //     session(['ad'=>123]);
+  //     return view('welcome');
+  // });
+  //
+  // Route::get('test', function () {
+  //     echo session('ad');
+  //     return 'test';
+  // });
 });
