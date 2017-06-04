@@ -12,10 +12,16 @@
 */
 
 Route::get('/', function () {
+    session(['key'=>123]);
     return view('welcome');
 });
 
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){  //路由分组(提出前缀和命名空间)
+Route::get('test', function () {
+    echo session('key');
+    return 'test';
+});
+
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'web'],function(){  //路由分组(提出前缀和命名空间)
   Route::get('login','indexController@login');
   Route::get('index','indexController@index');
 });
